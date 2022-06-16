@@ -26,8 +26,8 @@ options = {
   pipeline = {
     {
       action = "min_max_range_filter",
-      min_range = 1.,
-      max_range = 60.,
+      min_range = 0.5,
+      max_range = 5.,
     },
     {
       action = "dump_num_points",
@@ -66,7 +66,7 @@ options = {
    {
      action = "intensity_to_color",
      min_intensity = 0.,
-     max_intensity = 4095.,
+     max_intensity = 2000.,
    },
     {
       action = "write_xray_image",

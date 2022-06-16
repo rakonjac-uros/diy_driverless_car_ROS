@@ -21,7 +21,11 @@
 
   <group if="$(arg rviz)">
     <!-- Load RVIZ -->
+    
+    <param name="robot_description" textfile="$(find rover_2dnav)/cartographer_ros/urdf/os1_sensor.urdf" />
+    
     <node name="rviz_map" pkg="rviz" type="rviz" args="-d $(find rover_2dnav)/rviz/racer_laser_map.rviz" />
+    
 
     <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
         type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
@@ -31,13 +35,13 @@
       type="cartographer_offline_node" args="
           -configuration_directory $(find rover_2dnav)/cartographer_ros/configuration_files
           -configuration_basenames racer_3d.lua
-          -urdf_filenames $(find rover_2dnav)/cartographer_ros/urdf/os1_sensor.urdf
+          -urdf_filenames /home/uros/catkin_ws/src/diy_driverless_car_ROS/rover_2dnav/cartographer_ros/urdf/os1_sensor.urdf
           -bag_filenames $(arg bag_filenames)"
       output="screen">
     <!-- <remap from="scan" to="/scan_sim" /> -->
-    <remap from="points2" to="/os1_cloud_node/points" />
+    <remap from="points2" to="/os_cloud_node/points" />
     <!-- <remap from="imu" to="/imu/data" />  IMU Comp filter output -->
-    <remap from="imu" to="/os1_cloud_node/imu" /> 
+    <remap from="imu" to="/os_cloud_node/imu" /> 
   </node>
 
   
